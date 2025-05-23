@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Motoristas</title>
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+</head>
+<body>
+
+  <header class="admin-header">
+    <h1><i class="fas fa-shield-halved"></i> Painel Administrativo</h1>
+  </header>
+
+  <div class="admin-container">
+    <div class="lista-motoristas-container">
+      <h2><i class="fas fa-users"></i> Motoristas Cadastrados</h2>
+      <input type="text" id="buscaMotorista" onkeyup="filtrarMotoristas()" placeholder="Buscar por nome ou CPF...">
+      <div id="listaMotoristas" class="lista-motoristas">
+        <p class="placeholder-lista">Carregando motoristas...</p>
+      </div>
+    </div>
+
+    <div class="editor-motorista-container hidden" id="editorMotorista">
+      <h2><i class="fas fa-user-edit"></i> Editar Motorista</h2>
+      <div id="dadosMotoristaSelecionado">
+        <p class="placeholder-editor">Selecione um motorista da lista para editar.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="confirmacaoModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="fechar-modal" onclick="fecharConfirmacaoModal()">&times;</span>
+      <h3>Confirmação</h3>
+      <p id="mensagemConfirmacao"></p>
+      <div class="modal-botoes">
+        <button id="btnConfirmarAcao" class="btn-confirmar">Confirmar</button>
+        <button onclick="fecharConfirmacaoModal()" class="btn-cancelar">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
